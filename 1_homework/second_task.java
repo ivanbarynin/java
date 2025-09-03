@@ -8,17 +8,51 @@ public class second_task {
         int yuan = sc.nextInt();
         //Сумма денег в китайских рублях
         double rubles = yuan * ROUBLES_PER_YUAN;
-
+        //для проверки склонения
         int digit = yuan % 10;
-        //Для частных случаев 11-14
-        int twoDigit = yuan % 100;
-        //Проверка последнего значения для склонения
-        if (digit == 1 && twoDigit != 11 ){
-            System.out.println(yuan + " юань = " + rubles + " рублей.");
-        } else if ((digit >=1 && digit <=4) && (twoDigit < 11 && twoDigit > 14)) {
-            System.out.println(yuan + " юаня = " + rubles + " рублей.");
-        } else {
-            System.out.println(yuan + " юаней = " + rubles + " рублей.");
+    
+        //проверка склонения валюты
+        String okonchanieYuan;
+        String okonchanieRubles;
+
+        if (yuan % 100 >= 11 && yuan % 100 <= 14) {
+            okonchanieYuan = "юаней";
         }
-    }
+        else {
+            switch (digit) {
+                case 1:
+                    okonchanieYuan = "юань";
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    okonchanieYuan = "юаня";
+                    break;
+                default:
+                    okonchanieYuan = "юаней";
+            }
+        }
+
+        if (rubles % 100 >= 11 && rubles % 100 <= 14) {
+            okonchanieRubles = "рублей";
+        }
+        else {
+            switch (digit) {
+                case 1:
+                    okonchanieRubles = "рубль";
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    okonchanieRubles = "рубля";
+                    break;
+                default:
+                    okonchanieRubles = "рублей";
+            }
+        }
+
+
+        System.out.println(yuan + " " + okonchanieYuan + " = " + Math.floor(rubles) + " " + okonchanieRubles);
+                
+            }
 }

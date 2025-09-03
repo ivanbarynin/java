@@ -10,7 +10,7 @@ public class first_task{
         //Сумма денег в китайских рублях
         double rubles = yuan * ROUBLES_PER_YUAN;
 
-        System.out.println(rubles);
+        System.out.println(Math.floor(rubles));
 
     }
 }
